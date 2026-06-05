@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digicel Grenada - Free Event Wi-Fi</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -148,8 +149,8 @@
             margin: 0;
         }
 
-        /* Meraki Form Button Native Style Overrides */
-        input[type="submit"] {
+        /* Meraki Form Button Native Style Overrides & Fallback Layout */
+        input[type="submit"], .fallback-btn {
             background-color: var(--digicel-red) !important;
             color: #FFFFFF !important;
             border: none !important;
@@ -164,16 +165,19 @@
             box-shadow: 0 4px 15px rgba(227, 6, 19, 0.35) !important;
             text-transform: uppercase !important;
             letter-spacing: 0.5px !important;
+            display: block;
+            box-sizing: border-box;
+            text-align: center;
         }
 
-        input[type="submit"]:disabled {
+        input[type="submit"]:disabled, .fallback-btn:disabled {
             background-color: #444444 !important;
             color: #888888 !important;
             cursor: not-allowed !important;
             box-shadow: none !important;
         }
 
-        input[type="submit"]:not(:disabled):hover {
+        input[type="submit"]:not(:disabled):hover, .fallback-btn:not(:disabled):hover {
             background-color: #b8050f !important;
             box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5) !important;
         }
@@ -192,6 +196,7 @@
 
 <div class="splash-container">
     
+    <!-- Brand Context Header -->
     <div class="logo-container">
         <h1 class="digicel-logo">Digicel</h1>
         <div class="logo-subtext">Grenada</div>
@@ -202,20 +207,73 @@
     <h1>Welcome to the Network</h1>
     <p class="welcome-text">Get connected instantly courtesy of Digicel.</p>
 
+    <!-- Full Image Promotion Container -->
     <div class="promo-image-box">
         <div class="promo-header-tag">
             <span class="promo-tag">Current Promotion</span>
         </div>
         <div class="image-full-wrapper">
+            <!-- Fixed direct image asset reference -->
             <img src="https://exelcovert.github.io/Digicel_Splash/GND%20WorldCup%2003-SOC-1080x1920.jpg" alt="Digicel Big Matches Bigger Bundle Promotion">
         </div>
     </div>
 
+    <!-- Active User Explicit Legal Consent Statement -->
     <div class="consent-box">
         <p class="consent-text">
             By clicking the authorization control action step below, <strong>I agree</strong> to the default Digicel terms of use layout provisions.
         </p>
     </div>
 
+    <!-- Meraki System Form Engine -->
     <form action="$MERAKI:FORM_ACTION$" method="post" id="portal-form">
         <input type="hidden" name="target" value="$MERAKI:TARGET$">
+        $MERAKI:SUBMIT_BUTTON$
+    </form>
+
+    <div class="footer">
+        Powered by Cisco Meraki
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('portal-form');
+        if (!form) return;
+
+        // Try to locate Meraki's native form submit button
+        var submitBtn = form.querySelector('input[type="submit"]');
+        
+        // PREVIEW FALLBACK: If running locally outside Meraki, auto-create a mock button so it's visible
+        if (!submitBtn) {
+            submitBtn = document.createElement('input');
+            submitBtn.type = 'submit';
+            submitBtn.className = 'fallback-btn';
+            submitBtn.value = 'I Agree & Connect';
+            form.appendChild(submitBtn);
+        }
+        
+        // Execute the 5-second lock logic loop 
+        if (submitBtn) {
+            var secondsLeft = 5; 
+            
+            submitBtn.disabled = true;
+            var defaultText = "I Agree & Connect";
+            submitBtn.value = defaultText + " (" + secondsLeft + "s)";
+
+            var countdownInterval = setInterval(function() {
+                secondsLeft--;
+                if (secondsLeft > 0) {
+                    submitBtn.value = defaultText + " (" + secondsLeft + "s)";
+                } else {
+                    clearInterval(countdownInterval);
+                    submitBtn.value = defaultText;
+                    submitBtn.disabled = false; 
+                }
+            }, 1000);
+        }
+    });
+</script>
+
+</body>
+</html>
