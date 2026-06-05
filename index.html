@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digicel Grenada - Free Event Wi-Fi</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -24,9 +23,9 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: flex-start; 
+            align-items: flex-start;
             min-height: 100vh;
-            overflow-y: auto; 
+            overflow-y: auto; /* Force page level scrolling */
         }
 
         .splash-container {
@@ -40,10 +39,11 @@
             max-width: 420px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            margin: 30px 20px; 
+            margin: 30px 20px;
             box-sizing: border-box;
         }
 
+        /* Brand Header */
         .logo-container {
             margin-bottom: 20px;
         }
@@ -93,7 +93,7 @@
             margin: 0 0 25px 0;
         }
 
-        /* Full Promo Image Layout */
+        /* Full Promo Image Layout Style */
         .promo-image-box {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(227, 6, 19, 0.4);
@@ -119,7 +119,6 @@
             display: inline-block;
         }
 
-        /* Container allowing full vertical height display */
         .image-full-wrapper {
             margin: 0 12px 12px 12px;
             border-radius: 8px;
@@ -133,53 +132,100 @@
             height: auto;
         }
 
-        .consent-box {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 25px;
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 18px;
             text-align: left;
         }
 
-        .consent-text {
-            font-size: 12px;
-            color: #E0E0E0;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Meraki Form Button Native Style Overrides */
-        input[type="submit"] {
-            background-color: var(--digicel-red) !important;
-            color: #FFFFFF !important;
-            border: none !important;
-            padding: 16px !important;
-            width: 100% !important;
-            border-radius: 8px !important;
-            font-size: 16px !important;
-            font-weight: 700 !important;
-            cursor: pointer !important;
-            font-family: 'Montserrat', sans-serif !important;
-            transition: all 0.2s ease !important;
-            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.35) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
+        label {
             display: block;
+            font-size: 11px;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            color: #FFF;
+            font-size: 14px;
+            font-family: inherit;
             box-sizing: border-box;
-            text-align: center;
+            transition: all 0.25s ease;
         }
 
-        input[type="submit"]:disabled {
-            background-color: #444444 !important;
-            color: #888888 !important;
-            cursor: not-allowed !important;
-            box-shadow: none !important;
+        input[type="text"]:focus, input[type="email"]:focus {
+            outline: none;
+            border-color: var(--digicel-red);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 8px rgba(227, 6, 19, 0.3);
         }
 
-        input[type="submit"]:not(:disabled):hover {
-            background-color: #b8050f !important;
-            box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5) !important;
+        /* Terms & Checkbox */
+        .terms-container {
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            margin: 20px 0 25px 0;
+        }
+
+        .terms-container input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--digicel-red);
+            width: 16px;
+            height: 16px;
+        }
+
+        .terms-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin: 0;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        /* Action Button */
+        .btn-connect {
+            background-color: var(--digicel-red);
+            color: #FFFFFF;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.35);
+        }
+
+        .btn-connect:disabled {
+            background-color: #444444;
+            color: #888888;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-connect:not(:disabled):hover {
+            background-color: #b8050f;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5);
+        }
+
+        .btn-connect:active:not(:disabled) {
+            transform: translateY(1px);
         }
 
         .footer {
@@ -196,7 +242,6 @@
 
 <div class="splash-container">
     
-    <!-- Brand Context Header -->
     <div class="logo-container">
         <h1 class="digicel-logo">Digicel</h1>
         <div class="logo-subtext">Grenada</div>
@@ -204,10 +249,9 @@
 
     <div class="event-badge">✨ Free Event Wi-Fi</div>
 
-    <h1>Welcome to the Network</h1>
-    <p class="welcome-text">Get connected instantly courtesy of Digicel.</p>
+    <h1>Connect to High-Speed</h1>
+    <p class="welcome-text">Fill out your details below to activate your session, sponsored by Digicel.</p>
 
-    <!-- Full Image Promotion Container -->
     <div class="promo-image-box">
         <div class="promo-header-tag">
             <span class="promo-tag">Current Promotion</span>
@@ -217,17 +261,30 @@
         </div>
     </div>
 
-    <!-- Active User Explicit Legal Consent Statement -->
-    <div class="consent-box">
-        <p class="consent-text">
-            By clicking the authorization control action step below, <strong>I agree</strong> to the default Digicel terms of use layout provisions.
-        </p>
-    </div>
+    <form id="meraki-form" action="#" method="POST">
+        <input type="hidden" name="base_grant_url" id="base_grant_url">
+        <input type="hidden" name="user_continue_url" id="user_continue_url">
+        <input type="hidden" name="node_mac" id="node_mac">
+        <input type="hidden" name="client_mac" id="client_mac">
 
-    <!-- Meraki System Form Engine -->
-    <form action="$MERAKI:FORM_ACTION$" method="post" id="portal-form">
-        <input type="hidden" name="target" value="$MERAKI:TARGET$">
-        $MERAKI:SUBMIT_BUTTON$
+        <div class="form-group">
+            <label for="fullname">Your Full Name</label>
+            <input type="text" id="fullname" placeholder="e.g. Alister McLean" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="name@example.com" required>
+        </div>
+
+        <div class="terms-container">
+            <input type="checkbox" id="terms" required>
+            <label class="terms-label" for="terms">
+                I agree to the Terms of Service and consent to receiving updates from Digicel Grenada regarding new plans and events.
+            </label>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn-connect">Access Free Internet</button>
     </form>
 
     <div class="footer">
@@ -236,32 +293,53 @@
 </div>
 
 <script>
-    // Strict countdown logic targeting ONLY Meraki's generated live engine button
-    window.addEventListener('DOMContentLoaded', function() {
-        var form = document.getElementById('portal-form');
-        if (!form) return;
+    // Meraki URL Parameter Parser
+    function getURLParameter(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+    }
 
-        var submitBtn = form.querySelector('input[type="submit"]');
-        
+    // Dynamic Parameter Binding 
+    window.onload = function() {
+        var base_grant_url = getURLParameter('base_grant_url');
+        var user_continue_url = getURLParameter('user_continue_url');
+        var node_mac = getURLParameter('node_mac');
+        var client_mac = getURLParameter('client_mac');
+
+        if(base_grant_url) document.getElementById('base_grant_url').value = base_grant_url;
+        if(user_continue_url) document.getElementById('user_continue_url').value = user_continue_url;
+        if(node_mac) document.getElementById('node_mac').value = node_mac;
+        if(client_mac) document.getElementById('client_mac').value = client_mac;
+
+        // Apply dynamic form action submission URL redirection hook
+        if(base_grant_url) {
+            document.getElementById('meraki-form').action = base_grant_url;
+        } else {
+            console.log("Local development environment simulation: Meraki AP variables omitted.");
+        }
+
+        // --- ENFORCE THE MULTI-SECOND PROMO DISPLAY TIMER ---
+        var submitBtn = document.getElementById('submit-btn');
         if (submitBtn) {
             var secondsLeft = 5; 
-            
             submitBtn.disabled = true;
-            var defaultText = "I Agree & Connect";
+            var defaultText = "Access Free Internet";
             submitBtn.value = defaultText + " (" + secondsLeft + "s)";
+            submitBtn.innerText = defaultText + " (" + secondsLeft + "s)";
 
             var countdownInterval = setInterval(function() {
                 secondsLeft--;
                 if (secondsLeft > 0) {
                     submitBtn.value = defaultText + " (" + secondsLeft + "s)";
+                    submitBtn.innerText = defaultText + " (" + secondsLeft + "s)";
                 } else {
                     clearInterval(countdownInterval);
                     submitBtn.value = defaultText;
+                    submitBtn.innerText = defaultText;
                     submitBtn.disabled = false; 
                 }
             }, 1000);
         }
-    });
+    };
 </script>
 
 </body>
