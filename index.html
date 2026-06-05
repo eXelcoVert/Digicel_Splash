@@ -149,8 +149,8 @@
             margin: 0;
         }
 
-        /* Meraki Form Button Native Style Overrides & Fallback Layout */
-        input[type="submit"], .fallback-btn {
+        /* Meraki Form Button Native Style Overrides */
+        input[type="submit"] {
             background-color: var(--digicel-red) !important;
             color: #FFFFFF !important;
             border: none !important;
@@ -170,27 +170,16 @@
             text-align: center;
         }
 
-        input[type="submit"]:disabled, .fallback-btn:disabled {
+        input[type="submit"]:disabled {
             background-color: #444444 !important;
             color: #888888 !important;
             cursor: not-allowed !important;
             box-shadow: none !important;
         }
 
-        input[type="submit"]:not(:disabled):hover, .fallback-btn:not(:disabled):hover {
+        input[type="submit"]:not(:disabled):hover {
             background-color: #b8050f !important;
             box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5) !important;
-        }
-
-        /* Hides the raw unrendered Meraki placeholder text in local previews */
-        .meraki-form-wrapper {
-            color: transparent;
-            font-size: 0;
-        }
-        /* Keeps the actual interactive elements visible */
-        .meraki-form-wrapper input {
-            color: initial;
-            font-size: initial;
         }
 
         .footer {
@@ -235,13 +224,11 @@
         </p>
     </div>
 
-    <!-- Meraki System Form Engine Wrapped to Clean Raw Text Preview -->
-    <div class="meraki-form-wrapper">
-        <form action="$MERAKI:FORM_ACTION$" method="post" id="portal-form">
-            <input type="hidden" name="target" value="$MERAKI:TARGET$">
-            $MERAKI:SUBMIT_BUTTON$
-        </form>
-    </div>
+    <!-- Meraki System Form Engine -->
+    <form action="$MERAKI:FORM_ACTION$" method="post" id="portal-form">
+        <input type="hidden" name="target" value="$MERAKI:TARGET$">
+        $MERAKI:SUBMIT_BUTTON$
+    </form>
 
     <div class="footer">
         Powered by Cisco Meraki
@@ -249,33 +236,13 @@
 </div>
 
 <script>
+    // Strict countdown logic targeting ONLY Meraki's generated live engine button
     window.addEventListener('DOMContentLoaded', function() {
         var form = document.getElementById('portal-form');
         if (!form) return;
 
-        // Try to target Meraki's native form submit button
         var submitBtn = form.querySelector('input[type="submit"]');
-        var isLocalPreview = false;
         
-        // PREVIEW FALLBACK DETECT: If running locally outside Meraki, setup simulated preview button
-        if (!submitBtn) {
-            isLocalPreview = true;
-            submitBtn = document.createElement('input');
-            submitBtn.type = 'submit';
-            submitBtn.className = 'fallback-btn';
-            submitBtn.value = 'I Agree & Connect';
-            form.appendChild(submitBtn);
-
-            // Intercept submit to prevent the local "405 Not Allowed" crash error page
-            form.addEventListener('submit', function(e) {
-                if (isLocalPreview) {
-                    e.preventDefault();
-                    alert("Local Preview Success! Live simulation connected after timer expired.");
-                }
-            });
-        }
-        
-        // Execute the 5-second lock logic loop 
         if (submitBtn) {
             var secondsLeft = 5; 
             
