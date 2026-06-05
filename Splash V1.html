@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digicel Grenada - Free Event Wi-Fi</title>
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --digicel-red: #E30613;
+            --digicel-dark: #121212;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #B3B3B3;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at top, #2c0205 0%, var(--digicel-dark) 70%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .splash-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 35px 25px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Brand Header */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .digicel-logo {
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--digicel-red);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .logo-subtext {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: -2px;
+            font-weight: 600;
+        }
+
+        .event-badge {
+            background-color: rgba(227, 6, 19, 0.15);
+            color: #FF4D5A;
+            border: 1px solid rgba(227, 6, 19, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin: 0 0 25px 0;
+        }
+
+        /* Promo Display */
+        .promo-box {
+            background: linear-gradient(135deg, rgba(227, 6, 19, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+            border: 1px solid rgba(227, 6, 19, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-tag {
+            font-size: 9px;
+            background: var(--digicel-red);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .promo-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: #FFF;
+        }
+
+        .promo-details {
+            font-size: 12px;
+            color: #DDD;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .promo-highlight {
+            color: #FFD700;
+            font-weight: 700;
+        }
+
+        /* Consent and Agreement Box */
+        .consent-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .consent-text {
+            font-size: 12px;
+            color: #E0E0E0;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Action Button */
+        .btn-connect {
+            background-color: var(--digicel-red);
+            color: #FFFFFF;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-connect:hover {
+            background-color: #b8050f;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5);
+        }
+
+        .btn-connect:active {
+            transform: translateY(1px);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 10px;
+            color: #555;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+<div class="splash-container">
+    
+    <!-- Header / Brand -->
+    <div class="logo-container">
+        <h1 class="digicel-logo">Digicel</h1>
+        <div class="logo-subtext">Grenada</div>
+    </div>
+
+    <div class="event-badge">✨ Free Event Wi-Fi</div>
+
+    <h1>Welcome to the Network</h1>
+    <p class="welcome-text">Get connected instantly courtesy of Digicel.</p>
+
+    <!-- Promo Display -->
+    <div class="promo-box">
+        <span class="promo-tag">Current Promotion</span>
+        <h3 class="promo-title">Connect With Mom! 🇸🇬</h3>
+        <p class="promo-details">
+            Activate any eligible plan or sign up today at our booth for a chance to win a <span class="promo-highlight">4-Burner Gas Stove</span> or weekly <span class="promo-highlight">XCD $200 Vouchers</span>!
+        </p>
+    </div>
+
+    <!-- Explicit 1-Click Consent Interface -->
+    <div class="consent-box">
+        <p class="consent-text">
+            By clicking the button below, <strong>I agree</strong> to the Digicel Terms of Service and Privacy Policy for public Wi-Fi infrastructure access.
+        </p>
+    </div>
+
+    <!-- Cisco Meraki Trigger Component -->
+    <form id="meraki-form">
+        <button type="submit" class="btn-connect">I Agree & Connect</button>
+    </form>
+
+    <div class="footer">
+        Powered by Cisco Meraki
+    </div>
+</div>
+
+<script>
+    // Helper function to extract URL queries sent by Meraki hardware
+    function getURLParameter(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+    }
+
+    // Keep global track of variables passed from the Meraki AP
+    var base_grant_url = getURLParameter('base_grant_url');
+    var user_continue_url = getURLParameter('user_continue_url');
+
+    // Handle authentication logic on consent acknowledgment
+    document.getElementById('meraki-form').addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        if (base_grant_url) {
+            var redirectUrl = base_grant_url;
+            
+            if (user_continue_url) {
+                redirectUrl += "?continue_url=" + encodeURIComponent(user_continue_url);
+            }
+            
+            // Safe escape sequence to navigate away from the static W3Schools hosting sandbox
+            window.top.location.href = redirectUrl;
+        } else {
+            // Local preview environment assertion message
+            alert("Consent Verified! The portal will now smoothly pass your validation handshake to the Meraki network gate.");
+        }
+    });
+</script>
+
+</body>
+</html>
