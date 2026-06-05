@@ -132,42 +132,6 @@
             height: auto;
         }
 
-        /* Form Inputs */
-        .form-group {
-            margin-bottom: 18px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            font-size: 11px;
-            margin-bottom: 6px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        input[type="text"], input[type="email"] {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            color: #FFF;
-            font-size: 14px;
-            font-family: inherit;
-            box-sizing: border-box;
-            transition: all 0.25s ease;
-        }
-
-        input[type="text"]:focus, input[type="email"]:focus {
-            outline: none;
-            border-color: var(--digicel-red);
-            background: rgba(0, 0, 0, 0.4);
-            box-shadow: 0 0 8px rgba(227, 6, 19, 0.3);
-        }
-
         /* Terms & Checkbox */
         .terms-container {
             display: flex;
@@ -250,7 +214,7 @@
     <div class="event-badge">✨ Free Event Wi-Fi</div>
 
     <h1>Connect to High-Speed</h1>
-    <p class="welcome-text">Fill out your details below to activate your session, sponsored by Digicel.</p>
+    <p class="welcome-text">Accept our network terms below to activate your session, sponsored by Digicel.</p>
 
     <div class="promo-image-box">
         <div class="promo-header-tag">
@@ -266,16 +230,6 @@
         <input type="hidden" name="user_continue_url" id="user_continue_url">
         <input type="hidden" name="node_mac" id="node_mac">
         <input type="hidden" name="client_mac" id="client_mac">
-
-        <div class="form-group">
-            <label for="fullname">Your Full Name</label>
-            <input type="text" id="fullname" placeholder="e.g. Alister McLean" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="name@example.com" required>
-        </div>
 
         <div class="terms-container">
             <input type="checkbox" id="terms" required>
