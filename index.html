@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digicel Grenada - Free Event Wi-Fi</title>
-    <!-- Google Fonts for modern look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -24,8 +23,9 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; 
             min-height: 100vh;
+            overflow-y: auto; 
         }
 
         .splash-container {
@@ -39,11 +39,10 @@
             max-width: 420px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            margin: 20px;
+            margin: 30px 20px; 
             box-sizing: border-box;
         }
 
-        /* Brand Header */
         .logo-container {
             margin-bottom: 20px;
         }
@@ -93,16 +92,19 @@
             margin: 0 0 25px 0;
         }
 
-        /* Promo Display */
-        .promo-box {
-            background: linear-gradient(135deg, rgba(227, 6, 19, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+        /* Full Promo Image Layout */
+        .promo-image-box {
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(227, 6, 19, 0.4);
             border-radius: 12px;
-            padding: 15px;
             margin-bottom: 25px;
             text-align: left;
             position: relative;
             overflow: hidden;
+        }
+
+        .promo-header-tag {
+            padding: 12px 15px 8px 15px;
         }
 
         .promo-tag {
@@ -114,29 +116,22 @@
             font-weight: 700;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 8px;
         }
 
-        .promo-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin: 0 0 5px 0;
-            color: #FFF;
+        /* Container allowing full vertical height display */
+        .image-full-wrapper {
+            margin: 0 12px 12px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
         }
 
-        .promo-details {
-            font-size: 12px;
-            color: #DDD;
-            margin: 0;
-            line-height: 1.4;
+        .image-full-wrapper img {
+            width: 100%;
+            display: block;
+            height: auto;
         }
 
-        .promo-highlight {
-            color: #FFD700;
-            font-weight: 700;
-        }
-
-        /* Consent and Agreement Box */
         .consent-box {
             background: rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -153,32 +148,34 @@
             margin: 0;
         }
 
-        /* Action Button */
-        .btn-connect {
-            background-color: var(--digicel-red);
-            color: #FFFFFF;
-            border: none;
-            padding: 16px;
-            width: 100%;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.35);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        /* Meraki Form Button Native Style Overrides */
+        input[type="submit"] {
+            background-color: var(--digicel-red) !important;
+            color: #FFFFFF !important;
+            border: none !important;
+            padding: 16px !important;
+            width: 100% !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            font-family: 'Montserrat', sans-serif !important;
+            transition: all 0.2s ease !important;
+            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.35) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
         }
 
-        .btn-connect:hover {
-            background-color: #b8050f;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5);
+        input[type="submit"]:disabled {
+            background-color: #444444 !important;
+            color: #888888 !important;
+            cursor: not-allowed !important;
+            box-shadow: none !important;
         }
 
-        .btn-connect:active {
-            transform: translateY(1px);
+        input[type="submit"]:not(:disabled):hover {
+            background-color: #b8050f !important;
+            box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5) !important;
         }
 
         .footer {
@@ -195,7 +192,6 @@
 
 <div class="splash-container">
     
-    <!-- Header / Brand -->
     <div class="logo-container">
         <h1 class="digicel-logo">Digicel</h1>
         <div class="logo-subtext">Grenada</div>
@@ -206,61 +202,20 @@
     <h1>Welcome to the Network</h1>
     <p class="welcome-text">Get connected instantly courtesy of Digicel.</p>
 
-    <!-- Promo Display -->
-    <div class="promo-box">
-        <span class="promo-tag">Current Promotion</span>
-        <h3 class="promo-title">Connect With Mom! 🇸🇬</h3>
-        <p class="promo-details">
-            Activate any eligible plan or sign up today at our booth for a chance to win a <span class="promo-highlight">4-Burner Gas Stove</span> or weekly <span class="promo-highlight">XCD $200 Vouchers</span>!
-        </p>
+    <div class="promo-image-box">
+        <div class="promo-header-tag">
+            <span class="promo-tag">Current Promotion</span>
+        </div>
+        <div class="image-full-wrapper">
+            <img src="https://exelcovert.github.io/Digicel_Splash/GND%20WorldCup%2003-SOC-1080x1920.jpg" alt="Digicel Big Matches Bigger Bundle Promotion">
+        </div>
     </div>
 
-    <!-- Explicit 1-Click Consent Interface -->
     <div class="consent-box">
         <p class="consent-text">
-            By clicking the button below, <strong>I agree</strong> to the Digicel Terms of Service and Privacy Policy for public Wi-Fi infrastructure access.
+            By clicking the authorization control action step below, <strong>I agree</strong> to the default Digicel terms of use layout provisions.
         </p>
     </div>
 
-    <!-- Cisco Meraki Trigger Component -->
-    <form id="meraki-form">
-        <button type="submit" class="btn-connect">I Agree & Connect</button>
-    </form>
-
-    <div class="footer">
-        Powered by Cisco Meraki
-    </div>
-</div>
-
-<script>
-    // Helper function to extract URL queries sent by Meraki hardware
-    function getURLParameter(name) {
-        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
-    }
-
-    // Keep global track of variables passed from the Meraki AP
-    var base_grant_url = getURLParameter('base_grant_url');
-    var user_continue_url = getURLParameter('user_continue_url');
-
-    // Handle authentication logic on consent acknowledgment
-    document.getElementById('meraki-form').addEventListener('submit', function(e) {
-        e.preventDefault(); 
-
-        if (base_grant_url) {
-            var redirectUrl = base_grant_url;
-            
-            if (user_continue_url) {
-                redirectUrl += "?continue_url=" + encodeURIComponent(user_continue_url);
-            }
-            
-            // Safe escape sequence to navigate away from the static W3Schools hosting sandbox
-            window.top.location.href = redirectUrl;
-        } else {
-            // Local preview environment assertion message
-            alert("Consent Verified! The portal will now smoothly pass your validation handshake to the Meraki network gate.");
-        }
-    });
-</script>
-
-</body>
-</html>
+    <form action="$MERAKI:FORM_ACTION$" method="post" id="portal-form">
+        <input type="hidden" name="target" value="$MERAKI:TARGET$">
