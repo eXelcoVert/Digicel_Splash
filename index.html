@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digicel Grenada - Free Event Wi-Fi</title>
+    <!-- Google Fonts for modern look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -41,6 +42,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             margin: 30px 20px;
             box-sizing: border-box;
+            position: relative;
         }
 
         /* Brand Header */
@@ -150,13 +152,19 @@
         }
 
         .terms-label {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
             line-height: 1.4;
             margin: 0;
-            cursor: pointer;
             text-transform: none;
             letter-spacing: 0;
+        }
+
+        .terms-link {
+            color: var(--digicel-red);
+            text-decoration: underline;
+            font-weight: 600;
+            cursor: pointer;
         }
 
         /* Action Button */
@@ -188,8 +196,157 @@
             box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5);
         }
 
-        .btn-connect:active:not(:disabled) {
-            transform: translateY(1px);
+        /* Pop-out Modal Window Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden; 
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .terms-modal {
+            background: #1a1a1a;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            max-width: 480px;
+            width: 100%;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .terms-modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #FFF;
+        }
+
+        .pub-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .close-modal-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .close-modal-btn:hover {
+            color: #FFF;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            text-align: left;
+            font-size: 12.5px;
+            color: #DDD;
+            line-height: 1.6;
+        }
+
+        .modal-body h4 {
+            margin: 22px 0 8px 0;
+            color: var(--digicel-red);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 4px;
+        }
+        
+        .modal-body h4:first-of-type {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin: 0 0 12px 0;
+        }
+
+        .modal-body ul {
+            margin: 0 0 16px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .modal-body li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .notice-box {
+            background: rgba(223, 6, 19, 0.08);
+            border-left: 3px solid var(--digicel-red);
+            padding: 14px;
+            border-radius: 4px;
+            margin: 15px 0;
+            color: #EEE;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .btn-modal-accept {
+            background-color: transparent;
+            border: 1px solid var(--digicel-red);
+            color: #FFF;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-modal-accept:hover {
+            background-color: var(--digicel-red);
         }
 
         .footer {
@@ -206,6 +363,7 @@
 
 <div class="splash-container">
     
+    <!-- Header / Brand -->
     <div class="logo-container">
         <h1 class="digicel-logo">Digicel</h1>
         <div class="logo-subtext">Grenada</div>
@@ -216,6 +374,7 @@
     <h1>Connect to High-Speed</h1>
     <p class="welcome-text">Accept our network terms below to activate your session, sponsored by Digicel.</p>
 
+    <!-- LIVE PROMOTION FULL PICTURE BANNER -->
     <div class="promo-image-box">
         <div class="promo-header-tag">
             <span class="promo-tag">Current Promotion</span>
@@ -225,19 +384,23 @@
         </div>
     </div>
 
+    <!-- Cisco Meraki Capture Form -->
     <form id="meraki-form" action="#" method="POST">
+        <!-- Hidden elements needed by Cisco Meraki AP processing -->
         <input type="hidden" name="base_grant_url" id="base_grant_url">
         <input type="hidden" name="user_continue_url" id="user_continue_url">
         <input type="hidden" name="node_mac" id="node_mac">
         <input type="hidden" name="client_mac" id="client_mac">
 
+        <!-- Clean Consent Section -->
         <div class="terms-container">
             <input type="checkbox" id="terms" required>
             <label class="terms-label" for="terms">
-                I agree to the Terms of Service and consent to receiving updates from Digicel Grenada regarding new plans and events.
+                I accept the <span class="terms-link" id="open-terms">Terms and Conditions</span> for utilizing this free public Wi-Fi network asset.
             </label>
         </div>
 
+        <!-- Submission trigger with custom countdown -->
         <button type="submit" id="submit-btn" class="btn-connect">Access Free Internet</button>
     </form>
 
@@ -246,7 +409,155 @@
     </div>
 </div>
 
+<!-- Pop-out Modal Structure Layout -->
+<div class="modal-overlay" id="terms-overlay">
+    <div class="terms-modal">
+        <div class="modal-header">
+            <div>
+                <h3>Digicel Acceptable Use Policy</h3>
+                <div class="pub-date">Publication Date: March 10th, 2023</div>
+            </div>
+            <button class="close-modal-btn" id="close-terms-x">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h4>1. Purpose</h4>
+            <p>This Acceptable Use Policy defines the acceptable use of a Digicel website, network, product or service to ensure the privacy, security and integrity of all Digicel websites, networks, products or services.</p>
+            
+            <h4>2. Who We Are & How to Contact Us</h4>
+            <p><strong>2.1.</strong> In this Policy, “Digicel”, “us”, “we” and “our” refers to the Digicel entity named in the terms and conditions, service or product agreement for the specific website, product or service, which you have visited, purchased or subscribed.</p>
+            <p><strong>2.2.</strong> Please direct any questions or comments regarding this Acceptable Use Policy and complaints of violations of this Policy by emailing <a href="mailto:customercare@digicelgroup.com" style="color: var(--digicel-red); text-decoration: none;">customercare@digicelgroup.com</a>. Except where otherwise indicated “you” and “your” shall refer to customers and/or end users of Digicel websites, networks, products or services.</p>
+            
+            <h4>3. Scope of Policy</h4>
+            <p><strong>3.1.</strong> The following terms apply to your use of and access to any Digicel-owned or affiliated websites (“Website”), products (“Product”) or services (“Service”) as well as any electronic transmission sent, received, posted, accessed, or stored via any Digicel-owned or affiliated network ("Network"), Product or Service.</p>
+            <p><strong>3.2.</strong> In addition to any Terms and Conditions or Agreements between you and Digicel, this document stipulates the policies that govern your access to and use of a Digicel Website, Network, Product or Service. By accessing or using of a Digicel Website, Network, Product or Service, you agree to these terms (collectively the "Policy"), which Digicel may modify from time to time. Modifications to this Policy are effective upon its posting on our Website <a href="https://www.digicelgroup.com" target="_blank" style="color: var(--digicel-red);">www.digicelgroup.com</a>.</p>
+            
+            <div class="notice-box">
+                <strong>Important Notice:</strong> If you do not agree to accept, comply with or be bound by the terms of this policy, as amended from time to time, you should immediately stop using the website, network, products or services and where applicable, notify Digicel that you wish to terminate services.
+            </div>
+            
+            <h4>4. Acceptable Uses</h4>
+            <p>You may access and use a Digicel Website, Network, Product or Service only for lawful purposes. You are responsible for any transmission you send, receive, post, access, or store via our Network, including the content of any communication and you are responsible for abuse of your account by others.</p>
+            
+            <h4>5. Prohibited Uses</h4>
+            <p>Without limitation, you may not use (or allow anyone else to use) a Digicel Website, Network, Product or Service for:</p>
+            <p><strong>5.1.</strong> Illegal activity such as transmitting, distributing, unlawful soliciting, or storing any information that violates any relevant and applicable law.</p>
+            <p><strong>5.2.</strong> The infringement of intellectual property rights or other proprietary rights including, but not limited to, copyright, trademark, patent or trade secret protection. Such infringing activity include unauthorised copying, distribution, and/or posting of content (e.g. pictures, logos, software, articles, musical works, and videos) that violates the intellectual property/proprietary rights of others.</p>
+            <p><strong>5.3.</strong> Disseminating or posting material that is in breach of the right to privacy of others, unlawful, libellous, defamatory, obscene, harassing, threatening, harmful or invasive of publicity rights, abusive, inflammatory, or otherwise objectionable.</p>
+            <p><strong>5.4.</strong> The transmission or dissemination of images containing child pornography.</p>
+            <p><strong>5.5.</strong> The excessive utilisation of network resources, this includes, consuming a disproportionate amount of available Network resources resulting in the potential to disrupt or degrade the Network or Network usage by others. The determination of what constitutes excessive use depends on the specific state of the Network at any given time.</p>
+            <p><strong>5.6.</strong> Accessing any computer, software, data or any confidential, copyright-protected or patent protected material of any other person without the knowledge and consent of that person or use any tools designed to facilitate access such as “packet sniffers”.</p>
+            <p><strong>5.7.</strong> Altering, reproducing, or tampering the Services or any function, component or identifier of your Services or Products (such as International Mobile Subscriber Identity (IMSI) or the International Mobile Equipment Identity (IMEI)) that is not meant to be altered, reproduced or tampered with.</p>
+            
+            <p><strong>5.8.</strong> Misleading behaviour or conducting fraudulent business operations and practices; including but not limited to:</p>
+            <ul>
+                <li><strong>a.</strong> Offering or disseminating fraudulent goods, services, schemes, chain letters, or pyramid schemes;</li>
+                <li><strong>b.</strong> Impersonating any person or entity or forging anyone else’s digital or physical signature, seal, designation, or unique identification;</li>
+                <li><strong>c.</strong> Falsely stating or otherwise misrepresenting your affiliation with any person or entity;</li>
+                <li><strong>d.</strong> Using our Website, Product, Services or Network to create a false identity;</li>
+                <li><strong>e.</strong> Forging headers, invalid or non-existent domain names, and other means of deceptive addressing or manipulation of identifiers to disguise the origin of content transmitted through our Website, Product, Services or Network;</li>
+                <li><strong>f.</strong> Accessing without permission or right the accounts or computer systems of others, to spoof the URL, DNS or IP addresses of Digicel or any other entity, or to penetrate the security measures of Digicel or any other person’s computer system, or to attempt any of the foregoing.</li>
+            </ul>
+            
+            <p><strong>5.9.</strong> Causing harm or interference to our Website, Product, Services or Network by:</p>
+            <ul>
+                <li><strong>a.</strong> Disrupting any backbone network nodes or network service, or otherwise restricting, inhibiting, disrupting or impeding our ability to monitor or deliver Products or Services, any transmissions or data;</li>
+                <li><strong>b.</strong> Interfering with computer networking or telecommunications service to or from any internet user, host, provider or network, including, without limitation, denying service attacks, overloading a service, improperly seizing or abusing operator privileges, or attempting to crash a host;</li>
+                <li><strong>c.</strong> Disseminating or posting material that is harmful to the Network or other users of the Network including, but not limited to, viruses, Trojan horses, worms, time bombs, zombies, keystroke loggers, spyware, or any other computer programming routines that may damage, interfere with, secretly intercept or seize any system, program, data, or personal information.</li>
+            </ul>
+            
+            <p><strong>5.10.</strong> Using or accessing a Digicel Website, Network, Product or Service with an aim to cause harm to a minor.</p>
+            <p><strong>5.11.</strong> Accessing without permission or right the accounts or computer systems of others, to spoof the URL, DNS or IP addresses of Digicel or any other entity, or to penetrate the security measures of Digicel or any other person’s computer system, or to attempt any of the foregoing.</p>
+            
+            <h4>6. Unsolicited Communications</h4>
+            <p><strong>6.1.</strong> You may not use the Websites, Products, Services or Network to distribute, publish, or send unsolicited communications. This includes, without limitation:</p>
+            <ul>
+                <li><strong>a.</strong> Using automatic dialling and announcing devices to initiate or otherwise make unsolicited voice or facsimile calls and bulk mailing of commercial advertising and informational announcements not authorized by law;</li>
+                <li><strong>b.</strong> Sending or distributing spam, including any unsolicited advertisements, solicitations, commercial e-mail messages, informational announcements, or promotional messages of any kind;</li>
+                <li><strong>c.</strong> Sending or distributing chain mail, numerous copies of the same or substantially similar messages, empty messages, messages that contain no substantive content, very large messages or files that disrupt a server, account, newsgroup, or chat service; or any message that may be categorised as “phishing”.</li>
+            </ul>
+            
+            <h4>7. Security</h4>
+            <p><strong>7.1.</strong> You are responsible for any misuse of our Website, Products, Services or Network by your or by any other person with access to our Website, Products, Services or Network through your purchased product, service or equipment, or your account with us. As such, you must take reasonable steps ensure that others do not gain unauthorized access to the Services through any means, including, without limitation, wireless networking and wired networking.</p>
+            <p><strong>7.2.</strong> You may not violate or circumvent any security protocol, technical or organizational measure or safeguard implemented for the protection of our Website, Products, Services or Network in any way. Such violations may result in criminal or civil liability.</p>
+            <p><strong>7.3.</strong> You are solely responsible for the security of any device or equipment you choose to connect to our Website, Products, Services or Network including but not limited any data stored on that device or equipment. In particular, Digicel recommends against enabling security and controlled access features, where possible.</p>
+            <p><strong>7.4.</strong> Digicel may, but is not obligated to, investigate any violation of our Website, Products, Services or Network. Digicel may cooperate with law enforcement where criminal or unauthorised activity is suspected. By using Digicel products and services or sending, receiving, posting, accessing, or storing any electronic transmission via our Network, you agree to cooperate in any such investigation.</p>
+            
+            <p><strong>7.5.</strong> A non-exhaustive list of security violations include:</p>
+            <ul>
+                <li><strong>a. Hacking:</strong> Unauthorised access to or use of Digicel data, systems, or networks, including any attempt to probe, scan or test the vulnerability of a system or network or to breach our security or authentication measures without our express prior authorisation.</li>
+                <li><strong>b. Interception:</strong> Unauthorised monitoring of data or traffic on any network or system without the express prior authorisation of Digicel.</li>
+                <li><strong>c. Avoiding System Restrictions:</strong> Using manual or electronic means to avoid any limitations established by Digicel or attempting to gain unauthorised access to, alter, or destroy any information that relates to any end-user of a Digicel Product or Service.</li>
+                <li><strong>d. Crashing:</strong> Interfering with computer networking or telecommunications services to any user, host or network, including, without limitation, denial of service attacks, flooding of a network, overloading a service, improper seizing and abuse of operator privileges and attempts to disrupt the availability or services of a host.</li>
+            </ul>
+            
+            <p><strong>7.6.</strong> Digicel may, but is not obligated to, take any action it deems necessary to:</p>
+            <ul>
+                <li><strong>a.</strong> Protect its Website, Products, Services and Network, its rights, or the rights of its customers or third parties, or</li>
+                <li><strong>b.</strong> Optimise or improve its Website, Products, Services and Network services, systems, and equipment;</li>
+                <li><strong>c.</strong> Manage our Networks (or third party networks for which we have roaming or network sharing agreements) in order to optimize their efficiency for the benefit of our subscribers, including, without limitation, by way of the following: rate limiting (speed), rejection or removal of spam or otherwise unsolicited bulk e-mail, anti-virus, mechanisms, and protocol filtering to prevent hacking, viruses, or other potential harms without regard to any preference you may have communicated to us.</li>
+            </ul>
+            
+            <h4>8. Enforcement of the Policy</h4>
+            <p><strong>8.1.</strong> Digicel has the right, but is not obligated to monitor or investigate content that is transmitted using our Website, Products, Services and Network where, there is suspicious activity indicating a violation of this Policy.</p>
+            <p><strong>8.2.</strong> Digicel has the right, but is not obligated to enforce this Policy through active investigation, litigation, prosecution or any other available route.</p>
+            
+            <p><strong>8.3.</strong> Digicel reserves the right to act immediately and without notice to restrict, suspend, or terminate your use of our Website, Products, Services or Network if it reasonably determines that your conduct may:</p>
+            <ul>
+                <li><strong>a.</strong> Expose Digicel to sanctions, prosecution, civil action, or other liability;</li>
+                <li><strong>b.</strong> Cause harm to or interfere with the integrity or normal operations of our Website, Products, Services or Network or other networks with which Digicel is interconnected;</li>
+                <li><strong>c.</strong> Interfere with another Digicel customer's use of our Website, Products, Services or Network;</li>
+                <li><strong>d.</strong> Violate any applicable law, rule, or regulation; or</li>
+                <li><strong>e.</strong> Otherwise present an imminent risk of harm to Digicel or its customers.</li>
+            </ul>
+            
+            <p><strong>8.4.</strong> Digicel has the right, but not the obligation, to monitor compliance with this Policy or restrict any uses of a Digicel Website, Network, Product or Service that Digicel reasonably believes, in its sole discretion, violate this Policy.</p>
+            
+            <p><strong>8.5.</strong> Digicel may also access and disclose any information (including transactional information) related to your access and use of a Digicel Website, Network, Product or Service for any lawful reason, including but not limited to:</p>
+            <ul>
+                <li><strong>a.</strong> Responding to emergencies;</li>
+                <li><strong>b.</strong> Legal obligations;</li>
+                <li><strong>c.</strong> Protecting our rights or property and those of our customers; or</li>
+                <li><strong>d.</strong> Protecting users of those services and other carriers from fraudulent, abusive, or unlawful use of or subscription to such services.</li>
+            </ul>
+            
+            <h4>9. General</h4>
+            <p><strong>9.1.</strong> Any failure to insist upon or enforce performance of any provision in this Policy will not be construed as a waiver of any provision of this Policy or existing right of Digicel.</p>
+            <p><strong>9.2.</strong> No conduct or practice shall modify any provision in this Policy.</p>
+            <p><strong>9.3.</strong> Digicel may assign its rights and duties under these terms to a third party at any time without notice to you.</p>
+            <p><strong>9.4.</strong> If any provision of this Policy is deemed unlawful, void, or for any reason unenforceable, then that provision will be deemed severable from these terms and conditions so that it does not affect the validity and enforceability of any remaining provisions.</p>
+            <p><strong>9.5.</strong> This Policy shall be governed by, and construed in accordance with the governing law provision set out in the Terms & Conditions governing the applicable Website, Product, Services or Network.</p>
+            <p><strong>9.6.</strong> <strong>Any indirect or attempted breach or violation of this policy by or on behalf of a user and any actual or attempted breach or violation by a third party of a user shall be considered a breach or violation of this policy by such user.</strong></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-modal-accept" id="close-terms-btn">Accept & Close</button>
+        </div>
+    </div>
+</div>
+
 <script>
+    // Pop-out Modal Control Logic Engine
+    var overlay = document.getElementById('terms-overlay');
+    var openBtn = document.getElementById('open-terms');
+    var closeX = document.getElementById('close-terms-x');
+    var closeBtn = document.getElementById('close-terms-btn');
+    var termsCheckbox = document.getElementById('terms');
+
+    openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay.classList.add('active');
+    });
+
+    function hideModal() {
+        overlay.classList.remove('active');
+    }
+
+    closeX.addEventListener('click', hideModal);
+    closeBtn.addEventListener('click', function() {
+        hideModal();
+        // Automatically check the tickbox for them once they accept inside the popout
+        if(termsCheckbox) termsCheckbox.checked = true;
+    });
+
     // Meraki URL Parameter Parser
     function getURLParameter(name) {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
