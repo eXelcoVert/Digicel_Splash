@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digicel Grenada - World Cup Event Wi-Fi</title>
-    <!-- Google Fonts for modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Digicel Business Grenada - Event Wi-Fi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --digicel-red: #E30613;
-            --digicel-dark: #121212;
-            --card-bg: rgba(255, 255, 255, 0.06);
-            --border-light: rgba(255, 255, 255, 0.1);
+            --digicel-dark: #0A0A0B;
+            --digicel-slate: #1E2229;
+            --card-bg: rgba(15, 17, 23, 0.75);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(227, 6, 19, 0.25);
             --text-main: #FFFFFF;
-            --text-muted: #B3B3B3;
+            --text-muted: #A3A8B5;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: radial-gradient(circle at top, #2c0205 0%, var(--digicel-dark) 70%);
+            background: radial-gradient(circle at top right, #220305 0%, #0f1115 50%, var(--digicel-dark) 100%);
             color: var(--text-main);
             margin: 0;
             padding: 0;
@@ -26,105 +27,134 @@
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-            overflow-y: auto; /* Force page level scrolling */
+            overflow-y: auto;
         }
 
         .splash-container {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 35px 25px;
+            border-top: 3px solid var(--digicel-red);
+            border-radius: 16px;
+            padding: 40px 30px;
             width: 100%;
-            max-width: 420px;
+            max-width: 440px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            margin: 30px 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            margin: 40px 20px;
             box-sizing: border-box;
             position: relative;
         }
 
-        /* Brand Header */
+        /* Brand Header - Digicel Business Style */
         .logo-container {
-            margin-bottom: 20px;
+            margin-bottom: 28px;
         }
 
         .digicel-logo {
-            font-size: 34px;
+            font-size: 26px;
             font-weight: 800;
-            color: var(--digicel-red);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
             margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .digicel-logo span {
+            color: var(--digicel-red);
         }
 
         .logo-subtext {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            margin-top: -2px;
-            font-weight: 600;
+            margin-top: 4px;
+            font-weight: 700;
         }
 
         .event-badge {
-            background-color: rgba(227, 6, 19, 0.15);
-            color: #FF4D5A;
-            border: 1px solid rgba(227, 6, 19, 0.3);
-            padding: 6px 14px;
+            background-color: var(--digicel-slate);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
             border-radius: 50px;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        h1 {
-            font-size: 22px;
-            margin: 0 0 8px 0;
-            font-weight: 700;
+            letter-spacing: 1.5px;
         }
 
         .welcome-text {
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-muted);
-            line-height: 1.4;
-            margin: 0 0 25px 0;
+            line-height: 1.6;
+            margin: 0 0 24px 0;
+            font-weight: 400;
         }
 
-        /* Full Promo Image Layout Style */
+        /* Combined 4 + 1 Interactive Text Hook */
+        .business-cta-banner {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #FFF;
+            margin-bottom: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .business-cta-banner:hover {
+            background: rgba(227, 6, 19, 0.08);
+            border-color: rgba(227, 6, 19, 0.4);
+            color: #FF4D5A;
+        }
+
+        /* Enterprise Promo Layout Banner */
         .promo-image-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(227, 6, 19, 0.4);
-            border-radius: 12px;
-            margin-bottom: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-accent);
+            border-radius: 10px;
+            margin-bottom: 28px;
             text-align: left;
             position: relative;
             overflow: hidden;
         }
 
         .promo-header-tag {
-            padding: 12px 15px 8px 15px;
+            padding: 12px 16px 8px 16px;
         }
 
         .promo-tag {
-            font-size: 9px;
-            background: var(--digicel-red);
-            color: white;
-            padding: 2px 6px;
+            font-size: 9.5px;
+            background: rgba(227, 6, 19, 0.15);
+            color: #FF4D5A;
+            border: 1px solid rgba(227, 6, 19, 0.3);
+            padding: 3px 8px;
             border-radius: 4px;
             font-weight: 700;
             text-transform: uppercase;
             display: inline-block;
+            letter-spacing: 0.5px;
         }
 
         .image-full-wrapper {
             margin: 0 12px 12px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
         }
 
@@ -134,16 +164,21 @@
             height: auto;
         }
 
+        /* Hide the business image container natively until triggered */
+        #business-promo-img {
+            display: none;
+        }
+
         /* Terms & Checkbox */
         .terms-container {
             display: flex;
             align-items: flex-start;
             text-align: left;
-            margin: 20px 0 25px 0;
+            margin: 24px 0;
         }
 
         .terms-container input[type="checkbox"] {
-            margin-right: 10px;
+            margin-right: 12px;
             margin-top: 2px;
             cursor: pointer;
             accent-color: var(--digicel-red);
@@ -154,17 +189,20 @@
         .terms-label {
             font-size: 12px;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.5;
             margin: 0;
-            text-transform: none;
-            letter-spacing: 0;
         }
 
         .terms-link {
-            color: var(--digicel-red);
+            color: var(--text-main);
             text-decoration: underline;
             font-weight: 600;
             cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .terms-link:hover {
+            color: var(--digicel-red);
         }
 
         /* Action Button */
@@ -172,28 +210,29 @@
             background-color: var(--digicel-red);
             color: #FFFFFF;
             border: none;
-            padding: 14px;
+            padding: 15px;
             width: 100%;
             border-radius: 8px;
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
             font-family: inherit;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(227, 6, 19, 0.35);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 14px rgba(227, 6, 19, 0.4);
+            letter-spacing: 0.3px;
         }
 
         .btn-connect:disabled {
-            background-color: #444444;
-            color: #888888;
+            background-color: #2D3139;
+            color: #636975;
             cursor: not-allowed;
             box-shadow: none;
         }
 
         .btn-connect:not(:disabled):hover {
-            background-color: #b8050f;
+            background-color: #C10510;
             transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(227, 6, 19, 0.5);
+            box-shadow: 0 6px 20px rgba(227, 6, 19, 0.55);
         }
 
         /* Pop-out Modal Window Styling */
@@ -203,9 +242,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(5, 5, 6, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -223,17 +262,17 @@
         }
 
         .terms-modal {
-            background: #1a1a1a;
+            background: #13161C;
             border: 1px solid var(--border-light);
-            border-radius: 16px;
-            max-width: 480px;
+            border-radius: 12px;
+            max-width: 500px;
             width: 100%;
             max-height: 80vh;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .modal-overlay.active .terms-modal {
@@ -241,8 +280,8 @@
         }
 
         .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -250,16 +289,16 @@
 
         .modal-header h3 {
             margin: 0;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: -0.2px;
             color: #FFF;
         }
 
         .pub-date {
             font-size: 11px;
             color: var(--text-muted);
-            margin-top: 4px;
+            margin-top: 5px;
             font-weight: 500;
         }
 
@@ -271,6 +310,7 @@
             cursor: pointer;
             line-height: 1;
             padding: 0;
+            transition: color 0.2s ease;
         }
 
         .close-modal-btn:hover {
@@ -278,22 +318,21 @@
         }
 
         .modal-body {
-            padding: 20px;
+            padding: 24px;
             overflow-y: auto;
             text-align: left;
-            font-size: 12.5px;
-            color: #DDD;
+            font-size: 13px;
+            color: #CBD5E1;
             line-height: 1.6;
         }
 
         .modal-body h4 {
-            margin: 22px 0 8px 0;
-            color: var(--digicel-red);
-            font-size: 13px;
+            margin: 24px 0 10px 0;
+            color: var(--text-main);
+            font-size: 14px;
             font-weight: 700;
-            letter-spacing: 0.5px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 4px;
+            padding-bottom: 6px;
         }
         
         .modal-body h4:first-of-type {
@@ -301,48 +340,48 @@
         }
 
         .modal-body p {
-            margin: 0 0 12px 0;
+            margin: 0 0 14px 0;
         }
 
         .modal-body ul {
-            margin: 0 0 16px 0;
+            margin: 0 0 18px 0;
             padding-left: 0;
             list-style: none;
         }
 
         .modal-body li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             padding-left: 15px;
             position: relative;
         }
 
         .notice-box {
-            background: rgba(223, 6, 19, 0.08);
+            background: rgba(223, 6, 19, 0.05);
             border-left: 3px solid var(--digicel-red);
-            padding: 14px;
+            padding: 16px;
             border-radius: 4px;
-            margin: 15px 0;
-            color: #EEE;
+            margin: 20px 0;
+            color: #E2E8F0;
         }
 
         .modal-footer {
-            padding: 15px 20px;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 18px 24px;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         .btn-modal-accept {
             background-color: transparent;
             border: 1px solid var(--digicel-red);
             color: #FFF;
-            padding: 12px;
+            padding: 14px;
             width: 100%;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 6px;
+            font-size: 13.5px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .btn-modal-accept:hover {
@@ -350,12 +389,14 @@
         }
 
         .footer {
-            margin-top: 25px;
+            margin-top: 32px;
             font-size: 10px;
-            color: #555;
-            font-weight: 600;
-            letter-spacing: 1px;
+            color: #4A4E57;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -363,36 +404,36 @@
 
 <div class="splash-container">
     
-    <!-- Header / Brand -->
     <div class="logo-container">
-        <h1 class="digicel-logo">Digicel</h1>
+        <h1 class="digicel-logo">Digicel <span>Business</span></h1>
         <div class="logo-subtext">Grenada</div>
     </div>
 
     <div class="event-badge">✨ World Cup Event Wi-Fi</div>
 
-    <h1>Connect to High-Speed</h1>
-    <p class="welcome-text">Accept our network terms below to activate your session, sponsored by Digicel.</p>
+    <p class="welcome-text">Accept our network acceptable use policy below to provision your internet session.</p>
 
-    <!-- LIVE PROMOTION FULL PICTURE BANNER -->
+    <div class="business-cta-banner" id="promo-toggle-trigger">
+        🏢 Are you a Business Client? Tap here to view Enterprise Solutions
+    </div>
+
     <div class="promo-image-box">
         <div class="promo-header-tag">
-            <span class="promo-tag">Current Promotion</span>
+            <span class="promo-tag" id="promo-status-tag">Consumer Promotion</span>
         </div>
         <div class="image-full-wrapper">
-            <img src="https://exelcovert.github.io/Digicel_Splash/GND%20WorldCup%2003-SOC-1080x1920.jpg" alt="Digicel Big Matches Bigger Bundle Promotion">
+            <img id="commercial-promo-img" src="https://exelcovert.github.io/Digicel_Splash/GND%20WorldCup%2003-SOC-1080x1920.jpg" alt="Digicel Big Matches Bigger Bundle Promotion">
+            
+            <img id="business-promo-img" src="https://via.placeholder.com/1080x1920/1e2229/ffffff?text=Digicel+Business+Promotion" alt="Digicel Business Corporate Promo">
         </div>
     </div>
 
-    <!-- Cisco Meraki Capture Form -->
     <form id="meraki-form" action="#" method="POST">
-        <!-- Hidden elements needed by Cisco Meraki AP processing -->
         <input type="hidden" name="base_grant_url" id="base_grant_url">
         <input type="hidden" name="user_continue_url" id="user_continue_url">
         <input type="hidden" name="node_mac" id="node_mac">
         <input type="hidden" name="client_mac" id="client_mac">
 
-        <!-- Clean Consent Section -->
         <div class="terms-container">
             <input type="checkbox" id="terms" required>
             <label class="terms-label" for="terms">
@@ -400,16 +441,14 @@
             </label>
         </div>
 
-        <!-- Submission trigger with custom countdown -->
         <button type="submit" id="submit-btn" class="btn-connect">Access Free Internet</button>
     </form>
 
     <div class="footer">
-        Powered by Cisco Meraki
+        Powered by Digicel Business
     </div>
 </div>
 
-<!-- Pop-out Modal Structure Layout -->
 <div class="modal-overlay" id="terms-overlay">
     <div class="terms-modal">
         <div class="modal-header">
@@ -428,8 +467,8 @@
             <p><strong>2.2.</strong> Please direct any questions or comments regarding this Acceptable Use Policy and complaints of violations of this Policy by emailing <a href="mailto:customercare@digicelgroup.com" style="color: var(--digicel-red); text-decoration: none;">customercare@digicelgroup.com</a>. Except where otherwise indicated “you” and “your” shall refer to customers and/or end users of Digicel websites, networks, products or services.</p>
             
             <h4>3. Scope of Policy</h4>
-            <p><strong>3.1.</strong> The following terms apply to your use of and access to any Digicel-owned or affiliated websites (“Website”), products (“Product”) or services (“Service”) as well as any electronic transmission sent, received, posted, accessed, or stored via any Digicel-owned or affiliated network ("Network"), Product or Service.</p>
-            <p><strong>3.2.</strong> In addition to any Terms and Conditions or Agreements between you and Digicel, this document stipulates the policies that govern your access to and use of a Digicel Website, Network, Product or Service. By accessing or using of a Digicel Website, Network, Product or Service, you agree to these terms (collectively the "Policy"), which Digicel may modify from time to time. Modifications to this Policy are effective upon its posting on our Website <a href="https://www.digicelgroup.com" target="_blank" style="color: var(--digicel-red);">www.digicelgroup.com</a>.</p>
+            <p><strong>3.3.</strong> The following terms apply to your use of and access to any Digicel-owned or affiliated websites (“Website”), products (“Product”) or services (“Service”) as well as any electronic transmission sent, received, posted, accessed, or stored via any Digicel-owned or affiliated network ("Network"), Product or Service.</p>
+            <p><strong>3.4.</strong> In addition to any Terms and Conditions or Agreements between you and Digicel, this document stipulates the policies that govern your access to and use of a Digicel Website, Network, Product or Service. By accessing or using of a Digicel Website, Network, Product or Service, you agree to these terms (collectively the "Policy"), which Digicel may modify from time to time. Modifications to this Policy are effective upon its posting on our Website <a href="https://www.digicelgroup.com" target="_blank" style="color: var(--digicel-red);">www.digicelgroup.com</a>.</p>
             
             <div class="notice-box">
                 <strong>Important Notice:</strong> If you do not agree to accept, comply with or be bound by the terms of this policy, as amended from time to time, you should immediately stop using the website, network, products or services and where applicable, notify Digicel that you wish to terminate services.
@@ -494,7 +533,7 @@
             <ul>
                 <li><strong>a.</strong> Protect its Website, Products, Services and Network, its rights, or the rights of its customers or third parties, or</li>
                 <li><strong>b.</strong> Optimise or improve its Website, Products, Services and Network services, systems, and equipment;</li>
-                <li><strong>c.</strong> Manage our Networks (or third party networks for which we have roaming or network sharing agreements) in order to optimize their efficiency for the benefit of our subscribers, including, without limitation, by way of the following: rate limiting (speed), rejection or removal of spam or otherwise unsolicited bulk e-mail, anti-virus, mechanisms, and protocol filtering to prevent hacking, viruses, or other potential harms without regard to any preference you may have communicated to us.</li>
+                <li>-- c. ** Manage our Networks (or third party networks for which we have roaming or network sharing agreements) in order to optimize their efficiency for the benefit of our subscribers, including, without limitation, by way of the following: rate limiting (speed), rejection or removal of spam or otherwise unsolicited bulk e-mail, anti-virus, mechanisms, and protocol filtering to prevent hacking, viruses, or other potential harms without regard to any preference you may have communicated to us.</li>
             </ul>
             
             <h4>8. Enforcement of the Policy</h4>
@@ -554,8 +593,29 @@
     closeX.addEventListener('click', hideModal);
     closeBtn.addEventListener('click', function() {
         hideModal();
-        // Automatically check the tickbox for them once they accept inside the popout
         if(termsCheckbox) termsCheckbox.checked = true;
+    });
+
+    // Interactive 4 + 1 Toggle Layout Switcher Hook
+    var toggleTrigger = document.getElementById('promo-toggle-trigger');
+    var commercialImg = document.getElementById('commercial-promo-img');
+    var businessImg = document.getElementById('business-promo-img');
+    var statusTag = document.getElementById('promo-status-tag');
+    var showingBusiness = false;
+
+    toggleTrigger.addEventListener('click', function() {
+        showingBusiness = !showingBusiness;
+        if(showingBusiness) {
+            commercialImg.style.display = 'none';
+            businessImg.style.display = 'block';
+            statusTag.innerText = 'Business Promotion';
+            toggleTrigger.innerHTML = '🛒 Tap here to switch back to Consumer Offers';
+        } else {
+            commercialImg.style.display = 'block';
+            businessImg.style.display = 'none';
+            statusTag.innerText = 'Consumer Promotion';
+            toggleTrigger.innerHTML = '🏢 Are you a Business Client? Tap here to view Enterprise Solutions';
+        }
     });
 
     // Meraki URL Parameter Parser
@@ -578,8 +638,6 @@
         // Apply dynamic form action submission URL redirection hook
         if(base_grant_url) {
             document.getElementById('meraki-form').action = base_grant_url;
-        } else {
-            console.log("Local development environment simulation: Meraki AP variables omitted.");
         }
 
         // --- ENFORCE THE MULTI-SECOND PROMO DISPLAY TIMER ---
