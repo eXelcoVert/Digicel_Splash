@@ -419,7 +419,7 @@
         </div>
     </div>
 
-    <form id="meraki-form" action="#" method="POST" target="_blank">
+    <form id="meraki-form" action="#" method="POST">
         <input type="hidden" name="base_grant_url" id="base_grant_url">
         <input type="hidden" name="user_continue_url" id="user_continue_url" value="https://www.digicelbusiness.com/gd/en">
         <input type="hidden" name="continue_url" id="continue_url" value="https://www.digicelbusiness.com/gd/en">
@@ -607,15 +607,7 @@
             document.getElementById('meraki-form').action = base_grant_url;
         }
 
-        // --- ANDROID BREAKOUT CAPTIVE PORTAL OVERRIDE TRIGGER ---
-        var form = document.getElementById('meraki-form');
-        if (form) {
-            form.addEventListener('submit', function() {
-                // Instantly triggers a detached browser application state 
-                // forcing your redirect site to stay active on the screen permanent.
-                window.open("https://www.digicelbusiness.com/gd/en", "_blank");
-            });
-        }
+        // --- FIXED: REMOVED FORM SUBMIT INTERCEPTION OVERRIDE SO HANDSHAKE WORKS CORRECTLY ---
 
         // Elements for rotation
         var commercialImg = document.getElementById('commercial-promo-img');
