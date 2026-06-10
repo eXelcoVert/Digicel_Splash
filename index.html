@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digicel Business Grenada - Event Wi-Fi</title>
+    <title>Digicel Business Grenada - Mel's Bar Guest Wi-Fi</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -99,31 +99,7 @@
             font-weight: 400;
         }
 
-        /* Combined 4 + 1 Interactive Text Hook */
-        .business-cta-banner {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 11.5px;
-            font-weight: 600;
-            color: #FFF;
-            margin-bottom: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .business-cta-banner:hover {
-            background: rgba(227, 6, 19, 0.08);
-            border-color: rgba(227, 6, 19, 0.4);
-            color: #FF4D5A;
-        }
-
-        /* Enterprise Promo Layout Banner */
+        /* Enterprise Promo Layout Banner with Fixed Aspect Ratio Cross-Fade Container */
         .promo-image-box {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border-accent);
@@ -136,6 +112,8 @@
 
         .promo-header-tag {
             padding: 12px 16px 8px 16px;
+            position: relative;
+            z-index: 10;
         }
 
         .promo-tag {
@@ -151,22 +129,40 @@
             letter-spacing: 0.5px;
         }
 
+        /* Hardware Accelerated Smooth Transition Wrapper */
         .image-full-wrapper {
             margin: 0 12px 12px 12px;
             border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
+            position: relative;
+            /* Establishes safe aspect height for responsive canvas grids based on portrait source media */
+            display: grid;
+            grid-template-columns: 1fr;
         }
 
         .image-full-wrapper img {
+            grid-column-start: 1;
+            grid-row-start: 1;
             width: 100%;
-            display: block;
             height: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.99);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        visibility 0.6s step-end;
+            will-change: opacity, transform;
         }
 
-        /* Hide the business image container natively until triggered */
-        #business-promo-img {
-            display: none;
+        /* Active slide definition overrides */
+        .image-full-wrapper img.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        visibility 0.6s step-start;
         }
 
         /* Terms & Checkbox */
@@ -409,28 +405,24 @@
         <div class="logo-subtext">Grenada</div>
     </div>
 
-    <div class="event-badge">✨ World Cup Event Wi-Fi</div>
+    <div class="event-badge">✨ Mel's Bar Guest Wi-Fi</div>
 
     <p class="welcome-text">Accept our network acceptable use policy below to provision your internet session.</p>
-
-    <div class="business-cta-banner" id="promo-toggle-trigger">
-        🏢 Are you a Business Client? Tap here to view Enterprise Solutions
-    </div>
 
     <div class="promo-image-box">
         <div class="promo-header-tag">
             <span class="promo-tag" id="promo-status-tag">Consumer Promotion</span>
         </div>
         <div class="image-full-wrapper">
-            <img id="commercial-promo-img" src="https://exelcovert.github.io/Digicel_Splash/GND%20WorldCup%2003-SOC-1080x1920.jpg" alt="Digicel Big Matches Bigger Bundle Promotion">
+            <img id="commercial-promo-img" class="active" src="https://exelcovert.github.io/Digicel_Splash/GND%20WorldCup%2003-SOC-1080x1920.jpg" alt="Digicel Big Matches Bigger Bundle Promotion">
             
-            <img id="business-promo-img" src="https://via.placeholder.com/1080x1920/1e2229/ffffff?text=Digicel+Business+Promotion" alt="Digicel Business Corporate Promo">
+            <img id="business-promo-img" src="https://www.datocms-assets.com/170483/1760354045-connectivity.jpg?ar64=NDoz&crop=focalpoint&fit=crop&auto=format&w=1080&q=75" alt="Digicel Business Corporate Promo">
         </div>
     </div>
 
     <form id="meraki-form" action="#" method="POST">
         <input type="hidden" name="base_grant_url" id="base_grant_url">
-        <input type="hidden" name="user_continue_url" id="user_continue_url">
+        <input type="hidden" name="user_continue_url" id="user_continue_url" value="https://www.digicelbusiness.com/gd/en">
         <input type="hidden" name="node_mac" id="node_mac">
         <input type="hidden" name="client_mac" id="client_mac">
 
@@ -516,7 +508,7 @@
             </ul>
             
             <h4>7. Security</h4>
-            <p><strong>7.1.</strong> You are responsible for any misuse of our Website, Products, Services or Network by your or by any other person with access to our Website, Products, Services or Network through your purchased product, service or equipment, or your account with us. As such, you must take reasonable steps ensure that others do not gain unauthorized access to the Services through any means, including, without limitation, wireless networking and wired networking.</p>
+            <p><strong>7.1.</strong> You are responsible for any misuse of our Website, Products, Services or Network by your or by any other person with access to our Website, Products, Services or Network through your purchased product, service or equipment, or your account with us. As such, you must take reasonable steps ensure that others do not gain unauthorized access to the Services through any means, including, without limitation, wireless networking and wireless networking.</p>
             <p><strong>7.2.</strong> You may not violate or circumvent any security protocol, technical or organizational measure or safeguard implemented for the protection of our Website, Products, Services or Network in any way. Such violations may result in criminal or civil liability.</p>
             <p><strong>7.3.</strong> You are solely responsible for the security of any device or equipment you choose to connect to our Website, Products, Services or Network including but not limited any data stored on that device or equipment. In particular, Digicel recommends against enabling security and controlled access features, where possible.</p>
             <p><strong>7.4.</strong> Digicel may, but is not obligated to, investigate any violation of our Website, Products, Services or Network. Digicel may cooperate with law enforcement where criminal or unauthorised activity is suspected. By using Digicel products and services or sending, receiving, posting, accessing, or storing any electronic transmission via our Network, you agree to cooperate in any such investigation.</p>
@@ -596,28 +588,6 @@
         if(termsCheckbox) termsCheckbox.checked = true;
     });
 
-    // Interactive 4 + 1 Toggle Layout Switcher Hook
-    var toggleTrigger = document.getElementById('promo-toggle-trigger');
-    var commercialImg = document.getElementById('commercial-promo-img');
-    var businessImg = document.getElementById('business-promo-img');
-    var statusTag = document.getElementById('promo-status-tag');
-    var showingBusiness = false;
-
-    toggleTrigger.addEventListener('click', function() {
-        showingBusiness = !showingBusiness;
-        if(showingBusiness) {
-            commercialImg.style.display = 'none';
-            businessImg.style.display = 'block';
-            statusTag.innerText = 'Business Promotion';
-            toggleTrigger.innerHTML = '🛒 Tap here to switch back to Consumer Offers';
-        } else {
-            commercialImg.style.display = 'block';
-            businessImg.style.display = 'none';
-            statusTag.innerText = 'Consumer Promotion';
-            toggleTrigger.innerHTML = '🏢 Are you a Business Client? Tap here to view Enterprise Solutions';
-        }
-    });
-
     // Meraki URL Parameter Parser
     function getURLParameter(name) {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
@@ -631,16 +601,39 @@
         var client_mac = getURLParameter('client_mac');
 
         if(base_grant_url) document.getElementById('base_grant_url').value = base_grant_url;
-        if(user_continue_url) document.getElementById('user_continue_url').value = user_continue_url;
         if(node_mac) document.getElementById('node_mac').value = node_mac;
         if(client_mac) document.getElementById('client_mac').value = client_mac;
 
-        // Apply dynamic form action submission URL redirection hook
+        // Override Landers dynamically if the AP specifies an alternate return structure
+        // Otherwise, standard input fallback properties process the intended digicel business target landing spot safely.
         if(base_grant_url) {
             document.getElementById('meraki-form').action = base_grant_url;
         }
 
-        // --- ENFORCE THE MULTI-SECOND PROMO DISPLAY TIMER ---
+        // Elements for rotation
+        var commercialImg = document.getElementById('commercial-promo-img');
+        var businessImg = document.getElementById('business-promo-img');
+        var statusTag = document.getElementById('promo-status-tag');
+
+        // Function to toggle between ads with full CSS opacity cross-fading
+        function switchAds() {
+            if (commercialImg && businessImg && statusTag) {
+                if (commercialImg.classList.contains('active')) {
+                    commercialImg.classList.remove('active');
+                    businessImg.classList.add('active');
+                    statusTag.innerText = 'Business Promotion';
+                } else {
+                    businessImg.classList.remove('active');
+                    commercialImg.classList.add('active');
+                    statusTag.innerText = 'Consumer Promotion';
+                }
+            }
+        }
+
+        // --- CONTINUOUS SMOOTH AD ROTATION LOOP (Configured exactly for 3.75 seconds) ---
+        setInterval(switchAds, 3750);
+
+        // --- ENFORCE INITIAL 5-SECOND SUBMISSION TIMER BACKGROUND PROCESS ---
         var submitBtn = document.getElementById('submit-btn');
         if (submitBtn) {
             var secondsLeft = 5; 
@@ -651,6 +644,7 @@
 
             var countdownInterval = setInterval(function() {
                 secondsLeft--;
+
                 if (secondsLeft > 0) {
                     submitBtn.value = defaultText + " (" + secondsLeft + "s)";
                     submitBtn.innerText = defaultText + " (" + secondsLeft + "s)";
