@@ -136,7 +136,6 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
             position: relative;
-            /* Establishes safe aspect height for responsive canvas grids based on portrait source media */
             display: grid;
             grid-template-columns: 1fr;
         }
@@ -416,13 +415,14 @@
         <div class="image-full-wrapper">
             <img id="commercial-promo-img" class="active" src="https://exelcovert.github.io/Digicel_Splash/GND%20WorldCup%2003-SOC-1080x1920.jpg" alt="Digicel Big Matches Bigger Bundle Promotion">
             
-            <img id="business-promo-img" src="https://www.datocms-assets.com/170483/1760354045-connectivity.jpg?ar64=NDoz&crop=focalpoint&fit=crop&auto=format&w=1080&q=75" alt="Digicel Business Corporate Promo">
+            <img id="business-promo-img" src="https://via.placeholder.com/1080x1920/1e2229/ffffff?text=Digicel+Business+Promotion" alt="Digicel Business Corporate Promo">
         </div>
     </div>
 
-    <form id="meraki-form" action="#" method="POST">
+    <form id="meraki-form" action="#" method="POST" target="_blank">
         <input type="hidden" name="base_grant_url" id="base_grant_url">
         <input type="hidden" name="user_continue_url" id="user_continue_url" value="https://www.digicelbusiness.com/gd/en">
+        <input type="hidden" name="continue_url" id="continue_url" value="https://www.digicelbusiness.com/gd/en">
         <input type="hidden" name="node_mac" id="node_mac">
         <input type="hidden" name="client_mac" id="client_mac">
 
@@ -596,7 +596,6 @@
     // Dynamic Parameter Binding 
     window.onload = function() {
         var base_grant_url = getURLParameter('base_grant_url');
-        var user_continue_url = getURLParameter('user_continue_url');
         var node_mac = getURLParameter('node_mac');
         var client_mac = getURLParameter('client_mac');
 
@@ -604,10 +603,18 @@
         if(node_mac) document.getElementById('node_mac').value = node_mac;
         if(client_mac) document.getElementById('client_mac').value = client_mac;
 
-        // Override Landers dynamically if the AP specifies an alternate return structure
-        // Otherwise, standard input fallback properties process the intended digicel business target landing spot safely.
         if(base_grant_url) {
             document.getElementById('meraki-form').action = base_grant_url;
+        }
+
+        // --- ANDROID BREAKOUT CAPTIVE PORTAL OVERRIDE TRIGGER ---
+        var form = document.getElementById('meraki-form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                // Instantly triggers a detached browser application state 
+                // forcing your redirect site to stay active on the screen permanent.
+                window.open("https://www.digicelbusiness.com/gd/en", "_blank");
+            });
         }
 
         // Elements for rotation
@@ -630,7 +637,7 @@
             }
         }
 
-        // --- CONTINUOUS SMOOTH AD ROTATION LOOP (Configured exactly for 3.75 seconds) ---
+        // --- CONTINUOUS SMOOTH AD ROTATION LOOP (3.75 seconds) ---
         setInterval(switchAds, 3750);
 
         // --- ENFORCE INITIAL 5-SECOND SUBMISSION TIMER BACKGROUND PROCESS ---
